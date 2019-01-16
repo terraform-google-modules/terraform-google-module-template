@@ -16,10 +16,10 @@
 
 resource "random_string" "random_suffix" {
   length  = 4
-  upper   = false
-  lower   = true
-  number  = false
-  special = false
+  upper   = "false"
+  lower   = "true"
+  number  = "false"
+  special = "false"
 }
 
 module "example" {
