@@ -13,6 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Cookiecutter does not normal symlinks (see https://github.com/audreyr/cookiecutter/issues/865)
+# When the template is executed, they will become regular files that are duplicitous
+# This script creates symlinks as a Cookiecutter hook after the template is executed
+
 SHARED_FIXTURE_FILES=( outputs.tf terraform.tfvars variables.tf )
 SHARED_EXAMPLE_FILES=( test_output.tf )
 
