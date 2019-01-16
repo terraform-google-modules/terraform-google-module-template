@@ -26,6 +26,5 @@ module "example" {
   source = "../../../examples/simple_example"
 
   project_id       = "${var.project_id}"
-  credentials_path = "${local.credentials_path}"
   bucket_name      = "simple-example-${random_string.random_suffix.result}"
 }

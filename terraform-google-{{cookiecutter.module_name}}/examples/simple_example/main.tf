@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-provider "google" {
-  credentials = "${file(var.credentials_path)}"
-}
+provider "google" { }
 
 module "{{cookiecutter.module_name}}" {
   source      = "../../"

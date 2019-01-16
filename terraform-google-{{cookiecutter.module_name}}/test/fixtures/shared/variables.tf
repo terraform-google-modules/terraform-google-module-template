@@ -17,11 +17,3 @@
 variable "project_id" {
   description = "The GCP project to use for integration tests"
 }
-
-variable "credentials_path_relative" {
-  description = "The relative path from the fixture directory to the GCP credentials file that will run Terraform tests"
-}
-
-locals {
-  credentials_path = "${path.module}/${var.credentials_path_relative}"
-}
