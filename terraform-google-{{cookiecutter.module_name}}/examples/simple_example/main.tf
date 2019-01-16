@@ -19,7 +19,7 @@ provider "google" {
 }
 
 module "{{cookiecutter.module_name}}" {
-	source             = "../../"
-	project_id         = "${var.project_id}"
-	bucket_name        = "${var.bucket_name}"
+  source      = "../../"
+  project_id  = "${var.project_id}"
+  bucket_name = "${var.bucket_name}"
 }
