@@ -1,7 +1,8 @@
 name: simple_example
 depends:
   - name: inspec-gcp
-    url: https://github.com/inspec/inspec-gcp/archive/master.tar.gz
+    git: https://github.com/inspec/inspec-gcp.git
+    branch: master
 attributes:
   - name: project_id
     required: true
