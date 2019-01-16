@@ -1,6 +1,6 @@
 # terraform-google-{{cookiecutter.module_name}}
 
-This module handles opinionated Google Cloud Platform Kubernetes Engine cluster creation and configuration with Node Pools, IP MASQ, Network Policy, etc.
+This module was generated from [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template/), which by default generates a module that simply creates a GCS bucket. As the module develops, this README should be updated.
 
 The resources/services/activations/deletions that this module will create/trigger are:
 - Create a GCS bucket with the provided name
