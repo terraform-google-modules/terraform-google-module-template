@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-provider "google" { }
+provider "google" {}
 
 module "{{cookiecutter.module_name}}" {
   source      = "../../"
