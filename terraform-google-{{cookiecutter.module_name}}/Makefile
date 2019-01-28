@@ -54,10 +54,6 @@ check_docker:
 check_base_files:
 	@source test/make.sh && basefiles
 
-.PHONY: check_shebangs
-check_shebangs:
-	@source test/make.sh && check_bash
-
 .PHONY: check_trailing_whitespace
 check_trailing_whitespace:
 	@source test/make.sh && check_trailing_whitespace
@@ -69,8 +65,7 @@ test_check_headers:
 
 .PHONY: check_headers
 check_headers:
-	@echo "Checking file headers"
-	@python test/verify_boilerplate.py
+	@source test/make.sh && check_headers
 
 # Integration tests
 .PHONY: test_integration

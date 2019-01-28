@@ -14,7 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Please note that this file was generated from [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template).
+# Please note that this file was generated from
+# [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template).
 # Please make sure to contribute relevant changes upstream!
 
 ''' Combine file from:
@@ -32,8 +33,8 @@ import os
 import re
 import sys
 
-insert_separator_regex = '(.*?\[\^\]\:\ \(autogen_docs_start\))(.*?)(\n\[\^\]\:\ \(autogen_docs_end\).*?$)'  # noqa: E501
-exclude_separator_regex = '(.*?)Copyright 20\d\d Google LLC.*?limitations under the License.(.*?)$'  # noqa: E501
+insert_separator_regex = r'(.*?\[\^\]\:\ \(autogen_docs_start\))(.*?)(\n\[\^\]\:\ \(autogen_docs_end\).*?$)'  # noqa: E501
+exclude_separator_regex = r'(.*?)Copyright 20\d\d Google LLC.*?limitations under the License.(.*?)$'  # noqa: E501
 
 if len(sys.argv) != 3:
     sys.exit(1)
@@ -54,5 +55,5 @@ replace_content = groups[0] + groups[1]
 
 # Find where to put the replacement content, overwrite the input file
 groups = re.match(insert_separator_regex, input, re.DOTALL).groups(0)
-output = groups[0] + replace_content + groups[2]
+output = groups[0] + replace_content + groups[2] + "\n"
 open(sys.argv[1], "w").write(output)
