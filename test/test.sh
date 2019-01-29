@@ -6,7 +6,7 @@
 ##############################################################
 
 _curdir=$(pwd)
-cd ..
+cd staging/
 cookiecutter --no-input "${_curdir}" module_name=module-test
 cd ./terraform-google-module-test || exit 1
 cp "${_curdir}/credentials.test.json" ./credentials.json
