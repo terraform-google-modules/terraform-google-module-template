@@ -22,7 +22,9 @@ To run the example module tests after creating a new repository:
 
 When making changes to this template, the tests on the example module should be run to sanity-check changes, with the goal of ensuring that this template is functional at all times. These steps have been automated, and can be run as follows:
 
-1. Download a service account key for the project in which you want to run the generated module's tests as `/credentials.test.json`
+1. Download a service account key for the project in which you want to run the generated module's tests as `/credentials.test.json`. This service account should have the following IAM roles:
+	- `roles/storage.admin`
+
 2. Run `make test`
 
 If the automated test fails, it will clean up resources that the module created, and leave `../terraform-google-module-test` in place for review. Otherwise, all resources will be cleaned up, and the generated module will be deleted.
