@@ -27,4 +27,4 @@ When making changes to this template, the tests on the example module should be 
 
 2. Run `make test`
 
-If the automated test fails, it will clean up resources that the module created, and leave `../terraform-google-module-test` in place for review. Otherwise, all resources will be cleaned up, and the generated module will be deleted.
+If the automated test fails, it will clean up resources that the module created, and leave `staging/terraform-google-module-test` in place for review. Otherwise, all resources will be cleaned up, and the generated module will be deleted.
