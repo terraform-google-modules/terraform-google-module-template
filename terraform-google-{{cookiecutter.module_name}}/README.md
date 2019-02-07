@@ -33,7 +33,7 @@ Then perform the following commands on the root folder:
 Before this module can be used on a project, you must ensure that the following pre-requisites are fulfilled:
 
 1. Terraform is [installed](#software-dependencies) on the machine where Terraform is executed.
-2. The Service Account you execute the module with has the right [permissions](#iam-roles).
+2. The Service Account you execute the module with has the right [permissions](#configure-a-service-account).
 3. The necessary APIs are [active](#enable-apis) on the project.
 
 The [project factory](https://github.com/terraform-google-modules/terraform-google-project-factory) can be used to provision projects with the correct APIs active.
