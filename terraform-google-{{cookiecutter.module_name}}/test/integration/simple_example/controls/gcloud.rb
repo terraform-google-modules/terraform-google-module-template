@@ -20,7 +20,7 @@ control "gcloud" do
     its(:exit_status) { should eq 0 }
     its(:stderr) { should eq '' }
 
-    let!(:data) do
+    let(:data) do
       if subject.exit_status == 0
         JSON.parse(subject.stdout)
       else
