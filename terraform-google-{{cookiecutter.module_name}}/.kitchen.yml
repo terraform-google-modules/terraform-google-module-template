@@ -19,6 +19,9 @@ driver:
 provisioner:
   name: terraform
 
+verifier:
+  name: terraform
+
 platforms:
   - name: local
 
