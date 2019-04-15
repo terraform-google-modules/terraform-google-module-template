@@ -38,6 +38,5 @@ suites:
             - gcloud
         - name: simple_example gcp
           backend: gcp
-          shell: true
           controls:
             - gcp
