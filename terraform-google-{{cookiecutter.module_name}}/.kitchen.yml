@@ -14,19 +14,19 @@
 
 ---
 driver:
-  name: "terraform"
+  name: terraform
   command_timeout: 1800
 
 provisioner:
-  name: "terraform"
+  name: terraform
 
 platforms:
   - name: local
 
 suites:
-  - name: "simple_example"
+  - name: simple_example
     driver:
-      name: "terraform"
+      name: terraform
       command_timeout: 1800
       root_module_directory: test/fixtures/simple_example/
     verifier:
