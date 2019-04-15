@@ -28,10 +28,8 @@ platforms:
 suites:
   - name: simple_example
     driver:
-      name: terraform
       root_module_directory: test/fixtures/simple_example/
     verifier:
-      name: terraform
       color: false
       systems:
         - name: simple_example
@@ -43,5 +41,3 @@ suites:
           shell: true
           controls:
             - gcp
-    provisioner:
-      name: terraform
