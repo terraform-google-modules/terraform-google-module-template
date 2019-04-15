@@ -32,11 +32,11 @@ suites:
     verifier:
       color: false
       systems:
-        - name: simple_example
+        - name: simple_example local
           backend: local
           controls:
             - gcloud
-        - name: simple_example
+        - name: simple_example gcp
           backend: gcp
           shell: true
           controls:
