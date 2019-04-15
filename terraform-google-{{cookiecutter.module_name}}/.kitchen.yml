@@ -23,7 +23,7 @@ verifier:
   name: terraform
 
 platforms:
-  - name: local
+  - name: default
 
 suites:
   - name: simple_example
