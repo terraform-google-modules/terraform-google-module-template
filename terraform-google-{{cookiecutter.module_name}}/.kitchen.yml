@@ -15,7 +15,6 @@
 ---
 driver:
   name: terraform
-  command_timeout: 1800
 
 provisioner:
   name: terraform
@@ -27,7 +26,6 @@ suites:
   - name: simple_example
     driver:
       name: terraform
-      command_timeout: 1800
       root_module_directory: test/fixtures/simple_example/
     verifier:
       name: terraform
