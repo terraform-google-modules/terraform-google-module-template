@@ -59,18 +59,6 @@ In order to operate with the Service Account you must activate the following API
 Be sure you have the correct Terraform version (0.10.x), you can choose the binary here:
 - https://releases.hashicorp.com/terraform/
 
-## File structure
-The project has the following folders and files:
-
-- /: root folder
-- /examples: examples for using this module
-- /helpers: Helper scripts
-- /test: Folders with files for testing the module (see Testing section on this file)
-- /main.tf: main file for this module, contains all the resources to create
-- /variables.tf: all the variables for the module
-- /output.tf: the outputs of the module
-- /README.md: this file
-
 ## Testing
 
 ### Requirements
