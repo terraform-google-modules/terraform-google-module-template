@@ -15,9 +15,11 @@
  */
 
 variable "project_id" {
-  description = "The project ID to deploy to"
+  description = "The ID of the project in which to provision resources."
+  type        = "string"
 }
 
 variable "bucket_name" {
-  description = "The name of the bucket ot create"
+  description = "The name of the bucket to create."
+  type        = "string"
 }

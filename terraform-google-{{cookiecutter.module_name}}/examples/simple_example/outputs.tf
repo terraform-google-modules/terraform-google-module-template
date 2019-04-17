@@ -15,5 +15,6 @@
  */
 
 output "bucket_name" {
-  value = "${module.{{cookiecutter.module_name}}.default_bucket_name}"
+  description = "The name of the bucket."
+  value       = "${module.{{cookiecutter.module_name}}.default_bucket_name}"
 }

@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-provider "google" {}
+provider "google" {
+  version = "~> 2.0"
+}
 
 module "{{cookiecutter.module_name}}" {
-  source      = "../../"
+  source = "../.."
+
   project_id  = "${var.project_id}"
   bucket_name = "${var.bucket_name}"
 }
