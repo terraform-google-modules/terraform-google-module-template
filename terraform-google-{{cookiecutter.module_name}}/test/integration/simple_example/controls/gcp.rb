@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-bucket_name = attribute('bucket_name')
+bucket_name = attribute("bucket_name")
 
 control "gcp" do
   title "Google Cloud configuration"
