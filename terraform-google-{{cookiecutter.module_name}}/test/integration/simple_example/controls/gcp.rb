@@ -12,12 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-bucket_name = attribute("bucket_name")
-
 control "gcp" do
-  title "Google Cloud configuration"
+  title "GCP Resources"
 
-  describe google_storage_bucket(name: bucket_name) do
+  describe google_storage_bucket(name: attribute("bucket_name")) do
     it { should exist }
   end
 end
