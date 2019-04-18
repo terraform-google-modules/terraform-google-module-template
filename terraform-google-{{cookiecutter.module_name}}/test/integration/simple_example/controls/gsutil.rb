@@ -12,32 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-project_id = attribute("project_id")
+control "gsutil" do
+  title "gsutil"
 
-control "gcloud" do
-  title "gcloud configuration"
-  describe command("gcloud --project=#{project_id} services list --available --format=json") do
+  describe command(
+    "gsutil -o Credentials:gs_service_key_file=#{ENV.fetch "GOOGLE_APPLICATION_CREDENTIALS"} ls " \
+    "-p #{attribute("project_id")}"
+  ) do
     its(:exit_status) { should eq 0 }
     its(:stderr) { should eq "" }
-
-    let(:data) do
-      if subject.exit_status == 0
-        JSON.parse(subject.stdout)
-      else
-        {}
-      end
-    end
-
-    describe "enabled services" do
-      it "includes storage-api" do
-        expect(data).to include(
-          including(
-            "config" => including(
-              "name" => "storage-api.googleapis.com",
-            ),
-          ),
-        )
-      end
-    end
+    its(:stdout) { should match "gs://#{attribute("bucket_name")}" }
   end
 end
