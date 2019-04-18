@@ -28,5 +28,5 @@ module "example" {
   source = "../../../examples/simple_example"
 
   project_id  = "${var.project_id}"
-  bucket_name = "${random_pet.main.result}"
+  bucket_name = "${random_pet.main.id}"
 }
