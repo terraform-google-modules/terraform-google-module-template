@@ -11,8 +11,8 @@ The resources/services/activations/deletions that this module will create/trigge
 Basic usage of this module is as follows:
 
 ```hcl
-module "{cookiecutter.module_name}" {
-  source  = "terraform-google-modules/{{cookiecutter.module_name}}/google"
+module "{{ cookiecutter.module_name|replace('-', '_') }}" {
+  source  = "terraform-google-modules/{{ cookiecutter.module_name }}/google"
   version = "~> 0.1"
 
   project_id  = "<PROJECT ID>"

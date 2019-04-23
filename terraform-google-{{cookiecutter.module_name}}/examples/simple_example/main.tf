@@ -18,7 +18,7 @@ provider "google" {
   version = "~> 2.0"
 }
 
-module "{{cookiecutter.module_name}}" {
+module "{{ cookiecutter.module_name|replace('-', '_') }}" {
   source = "../.."
 
   project_id  = "${var.project_id}"
