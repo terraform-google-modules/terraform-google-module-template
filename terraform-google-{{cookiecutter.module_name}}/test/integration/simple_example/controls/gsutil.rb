@@ -15,10 +15,7 @@
 control "gsutil" do
   title "gsutil"
 
-  describe command(
-    "gsutil -o Credentials:gs_service_key_file=#{ENV.fetch "GOOGLE_APPLICATION_CREDENTIALS"} ls " \
-    "-p #{attribute("project_id")}"
-  ) do
+  describe command("gsutil ls -p #{attribute("project_id")}") do
     its(:exit_status) { should eq 0 }
     its(:stderr) { should eq "" }
     its(:stdout) { should match "gs://#{attribute("bucket_name")}" }
