@@ -24,5 +24,5 @@ if [ "$_result" -ne "0" ]; then
 	exit $_result
 fi
 cd .. || exit 1
-rm -rf terraform-google-module-test
+sudo rm -rf terraform-google-module-test
 cd "${_curdir}" || exit 1
