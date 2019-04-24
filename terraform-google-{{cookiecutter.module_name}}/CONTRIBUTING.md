@@ -39,6 +39,7 @@ submodules, and example modules are all functionally correct.
 The following dependencies must be installed on the development system:
 
 - [Docker Engine][docker-engine]
+- [Google Cloud SDK][google-cloud-sdk]
 - [make]
 
 ### Inputs
@@ -97,8 +98,9 @@ Run `make check`.
 
 [docker-engine]: https://www.docker.com/products/docker-engine
 [flake8]: http://flake8.pycqa.org/en/latest/
-[hadolint]: https://github.com/hadolint/hadolint
 [gofmt]: https://golang.org/cmd/gofmt/
+[google-cloud-sdk]: https://cloud.google.com/sdk/install
+[hadolint]: https://github.com/hadolint/hadolint
 [inspec]: https://inspec.io/
 [kitchen-terraform]: https://github.com/newcontext-oss/kitchen-terraform
 [kitchen]: https://kitchen.ci/

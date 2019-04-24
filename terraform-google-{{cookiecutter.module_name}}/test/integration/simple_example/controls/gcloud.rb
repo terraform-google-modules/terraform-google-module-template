@@ -12,32 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
-driver:
-  name: terraform
+control "gcloud" do
+  title "gcloud"
 
-provisioner:
-  name: terraform
-
-verifier:
-  name: terraform
-
-platforms:
-  - name: default
-
-suites:
-  - name: simple_example
-    driver:
-      root_module_directory: test/fixtures/simple_example/
-    verifier:
-      color: false
-      systems:
-        - name: simple_example local
-          backend: local
-          controls:
-            - gcloud
-            - gsutil
-        - name: simple_example gcp
-          backend: gcp
-          controls:
-            - gcp
+  describe command("gcloud --project=#{attribute("project_id")} services list --enabled") do
+    its(:exit_status) { should eq 0 }
+    its(:stderr) { should eq "" }
+    its(:stdout) { should match "storage-api.googleapis.com" }
+  end
+end
