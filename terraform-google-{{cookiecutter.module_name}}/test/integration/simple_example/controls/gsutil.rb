@@ -12,10 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-control "gcp" do
-  title "GCP Resources"
+control "gsutil" do
+  title "gsutil"
 
-  describe google_storage_bucket(name: attribute("bucket_name")) do
-    it { should exist }
+  describe command("gsutil ls -p #{attribute("project_id")}") do
+    its(:exit_status) { should eq 0 }
+    its(:stderr) { should eq "" }
+    its(:stdout) { should match "gs://#{attribute("bucket_name")}" }
   end
 end

@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
-resource "google_storage_bucket" "default_bucket" {
+terraform {
+  required_version = "~> 0.11.0"
+}
+
+resource "google_storage_bucket" "main" {
   project = "${var.project_id}"
   name    = "${var.bucket_name}"
 }

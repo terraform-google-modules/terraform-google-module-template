@@ -77,7 +77,6 @@ function check_terraform() {
   find_files . -name "*.tf" -print0 \
     | compat_xargs -0 -n1 dirname \
     | sort -u \
-    | grep -xv './test/fixtures/shared' \
     | compat_xargs -t -n1 terraform validate --check-variables=false
 }
 

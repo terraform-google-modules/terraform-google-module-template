@@ -3,26 +3,25 @@
 This module was generated from [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template/), which by default generates a module that simply creates a GCS bucket. As the module develops, this README should be updated.
 
 The resources/services/activations/deletions that this module will create/trigger are:
+
 - Create a GCS bucket with the provided name
 
 ## Usage
-There are examples included in the [examples](./examples/) folder but simple usage is as follows:
+
+Basic usage of this module is as follows:
 
 ```hcl
-module "bucket" {
-  source                     = "terraform-google-modules/{{cookiecutter.module_name}}/google"
-  project_id                 = "<PROJECT ID>"
-  bucket_name                = "gcs-test-bucket"
+module "{{ cookiecutter.module_name|replace('-', '_') }}" {
+  source  = "terraform-google-modules/{{ cookiecutter.module_name }}/google"
+  version = "~> 0.1"
+
+  project_id  = "<PROJECT ID>"
+  bucket_name = "gcs-test-bucket"
 }
 ```
 
-Then perform the following commands on the root folder:
-
-- `terraform init` to get the plugins
-- `terraform plan` to see the infrastructure plan
-- `terraform apply` to apply the infrastructure build
-- `terraform destroy` to destroy the built infrastructure
-
+Functional examples are included in the
+[examples](./examples/) directory.
 
 [^]: (autogen_docs_start)
 
@@ -30,141 +29,42 @@ Then perform the following commands on the root folder:
 
 ## Requirements
 
-Before this module can be used on a project, you must ensure that the following pre-requisites are fulfilled:
+These sections describe requirements for using this module.
 
-1. Terraform is [installed](#software-dependencies) on the machine where Terraform is executed.
-2. The Service Account you execute the module with has the right [permissions](#configure-a-service-account).
-3. The necessary APIs are [active](#enable-apis) on the project.
+### Software
 
-The [project factory](https://github.com/terraform-google-modules/terraform-google-project-factory) can be used to provision projects with the correct APIs active.
+The following dependencies must be available:
 
-### Software Dependencies
-### Terraform
-- [Terraform](https://www.terraform.io/downloads.html) 0.10.x
-- [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google) plugin v1.8.0
+- [Terraform][terraform] v0.11
+- [Terraform Provider for GCP][terraform-provider-gcp] plugin v2.0
 
-### Configure a Service Account
-In order to execute this module you must have a Service Account with the
-following project roles:
-- roles/storage.admin
+### Service Account
 
-### Enable APIs
-In order to operate with the Service Account you must activate the following APIs on the project where the Service Account was created:
+A service account with the following roles must be used to provision
+the resources of this module:
 
-- Storage JSON API - storage-api.googleapis.com
+- Storage Admin: `roles/storage.admin`
 
-## Install
+The [Project Factory module][project-factory-module] and the
+[IAM module][iam-module] may be used in combination to provision a
+service account with the necessary roles applied.
 
-### Terraform
-Be sure you have the correct Terraform version (0.10.x), you can choose the binary here:
-- https://releases.hashicorp.com/terraform/
+### APIs
 
-## File structure
-The project has the following folders and files:
+A project with the following APIs enabled must be used to host the
+resources of this module:
 
-- /: root folder
-- /examples: examples for using this module
-- /helpers: Helper scripts
-- /test: Folders with files for testing the module (see Testing section on this file)
-- /main.tf: main file for this module, contains all the resources to create
-- /variables.tf: all the variables for the module
-- /output.tf: the outputs of the module
-- /README.md: this file
+- Google Cloud Storage JSON API: `storage-api.googleapis.com`
 
-## Testing
+The [Project Factory module][project-factory-module] can be used to
+provision a project with the necessary APIs enabled.
 
-### Requirements
-- [bundler](https://github.com/bundler/bundler)
-- [gcloud](https://cloud.google.com/sdk/install)
-- [terraform-docs](https://github.com/segmentio/terraform-docs/releases) 0.3.0
+## Contributing
 
-### Autogeneration of documentation from .tf files
-Run
-```
-make generate_docs
-```
+Refer to the [contribution guidelines](./CONTRIBUTING.md) for
+information on contributing to this module.
 
-### Integration test
-
-Integration tests are run though [test-kitchen](https://github.com/test-kitchen/test-kitchen), [kitchen-terraform](https://github.com/newcontext-oss/kitchen-terraform), and [InSpec](https://github.com/inspec/inspec).
-
-`test-kitchen` instances are defined in [`.kitchen.yml`](./.kitchen.yml). The test-kitchen instances in `test/fixtures/` wrap identically-named examples in the `examples/` directory.
-
-#### Setup
-
-1. Configure the [test fixtures](#test-configuration)
-2. Download a Service Account key with the necessary permissions and put it in the module's root directory with the name `credentials.json`.
-3. Build the Docker container for testing:
-
-  ```
-  make docker_build_kitchen_terraform
-  ```
-4. Run the testing container in interactive mode:
-
-  ```
-  make docker_run
-  ```
-
-  The module root directory will be loaded into the Docker container at `/cft/workdir/`.
-5. Run kitchen-terraform to test the infrastructure:
-
-  1. `kitchen create` creates Terraform state and downloads modules, if applicable.
-  2. `kitchen converge` creates the underlying resources. Run `kitchen converge <INSTANCE_NAME>` to create resources for a specific test case.
-  3. `kitchen verify` tests the created infrastructure. Run `kitchen verify <INSTANCE_NAME>` to run a specific test case.
-  4. `kitchen destroy` tears down the underlying resources created by `kitchen converge`. Run `kitchen destroy <INSTANCE_NAME>` to tear down resources for a specific test case.
-
-Alternatively, you can simply run `make test_integration_docker` to run all the test steps non-interactively.
-
-#### Test configuration
-
-Each test-kitchen instance is configured with a `variables.tfvars` file in the test fixture directory. For convenience, since all of the variables are project-specific, these files have been symlinked to `test/fixtures/shared/terraform.tfvars`.
-Similarly, each test fixture has a `variables.tf` to define these variables, and an `outputs.tf` to facilitate providing necessary information for `inspec` to locate and query against created resources.
-
-Each test-kitchen instance creates necessary fixtures to house resources.
-
-### Autogeneration of documentation from .tf files
-Run
-```
-make generate_docs
-```
-
-### Linting
-The makefile in this project will lint or sometimes just format any shell,
-Python, golang, Terraform, or Dockerfiles. The linters will only be run if
-the makefile finds files with the appropriate file extension.
-
-All of the linter checks are in the default make target, so you just have to
-run
-
-```
-make -s
-```
-
-The -s is for 'silent'. Successful output looks like this
-
-```
-Running shellcheck
-Running flake8
-Running go fmt and go vet
-Running terraform validate
-Running hadolint on Dockerfiles
-Checking for required files
-Testing the validity of the header check
-..
-----------------------------------------------------------------------
-Ran 2 tests in 0.026s
-
-OK
-Checking file headers
-The following lines have trailing whitespace
-```
-
-The linters
-are as follows:
-* Shell - shellcheck. Can be found in homebrew
-* Python - flake8. Can be installed with 'pip install flake8'
-* Golang - gofmt. gofmt comes with the standard golang installation. golang
-is a compiled language so there is no standard linter.
-* Terraform - terraform has a built-in linter in the 'terraform validate'
-command.
-* Dockerfiles - hadolint. Can be found in homebrew
+[iam-module]: https://registry.terraform.io/modules/terraform-google-modules/iam/google
+[project-factory-module]: https://registry.terraform.io/modules/terraform-google-modules/project-factory/google
+[terraform-provider-gcp]: https://www.terraform.io/docs/providers/google/index.html
+[terraform]: https://www.terraform.io/downloads.html

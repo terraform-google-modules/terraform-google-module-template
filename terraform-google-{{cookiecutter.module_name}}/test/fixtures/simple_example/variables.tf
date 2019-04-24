@@ -15,5 +15,6 @@
  */
 
 variable "project_id" {
-  description = "The GCP project to use for integration tests"
+  description = "The ID of the project in which to provision resources."
+  type        = "string"
 }
