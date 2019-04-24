@@ -1,30 +1,48 @@
 # CFT Module Template
 
-A collection of boilerplate for starting a Cloud Foundation Toolkit module with `test-kitchen`, `inspec-gcp`, and `kitchen-terraform` testing frameworks.
+A template for starting a Cloud Foundation Toolkit Terraform module.
 
-## Use
+## Usage
 
-1. Create the new repository: `cookiecutter https://github.com/terraform-google-modules/terraform-google-module-template.git`
+The template must be rendered using [Cookiecutter][cookiecutter].
 
-## Example Module - Bucket Creation
+Generate a new module by running the following command:
 
-Note that for illustrative purposes, this template will create a module that creates a Google Cloud Storage bucket and runs tests against it, to illustrate the full testing pipeline. References to this bucket should be removed before use.
+`cookiecutter https://github.com/terraform-google-modules/terraform-google-module-template.git`
 
-### Testing
+## Generated Module
 
-To run the example module tests after creating a new repository:
+A newly generated module includes logic to create a Google Cloud
+Storage bucket, a functional example module, and
+[Kitchen-Terraform][kitchen-terraform] integration tests. All of this
+content should be modified to suit the purpose of the new module.
 
-- Create a Service Account key in `/credentials.json` (relative to the new repository location)
-- `cp test/fixtures/shared/terraform.tfvars.sample test/fixtures/shared/terraform.tfvars` and edit `test/fixtures/shared/terraform.tfvars`
-- Run `make test_integration_docker`.
+## Testing
 
-## Automated Testing
+Changes to this template must be tested to ensure that generated
+modules remain functional.
 
-When making changes to this template, the tests on the example module should be run to sanity-check changes, with the goal of ensuring that this template is functional at all times. These steps have been automated, and can be run as follows:
+Refer to the [README][readme] and [CONTRIBUTING][contributing]
+documents of the template to understand the requirements for testing
+the generated module.
 
-1. Download a service account key for the project in which you want to run the generated module's tests as `/credentials.test.json`. This service account should have the following IAM roles:
-	- `roles/storage.admin`
+The key for the service account described in the README must be located
+at `./credentials.test.json`.
 
-2. Run `make test`
+Generate a module and execute its tests by running the following
+command:
 
-If the automated test fails, it will clean up resources that the module created, and leave `staging/terraform-google-module-test` in place for review. Otherwise, all resources will be cleaned up, and the generated module will be deleted.
+```sh
+PROJECT_ID="<ID of test project>" \
+SERVICE_ACCOUNT_JSON="$(cat ./credentials.test.json)" \
+make test
+```
+
+The module will be generated at
+`./staging/terraform-google-module-test`. If the tests pass, the module
+will be removed; otherwise, it will be left in place for inspection.
+
+[cookiecutter]: https://cookiecutter.readthedocs.io/
+[kitchen-terraform]: https://github.com/newcontext-oss/kitchen-terraform
+[contributing]: ./terraform-google-{{cookiecutter.module_name}}/CONTRIBUTING.md
+[readme]: ./terraform-google-{{cookiecutter.module_name}}/README.md
