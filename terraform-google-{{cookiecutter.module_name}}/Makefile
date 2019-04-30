@@ -25,9 +25,11 @@ DOCKER_TAG_BASE_KITCHEN_TERRAFORM 	?= 1.0.1
 DOCKER_REPO_BASE_KITCHEN_TERRAFORM 	:= ${DOCKER_ORG}/cft/kitchen-terraform:${DOCKER_TAG_BASE_KITCHEN_TERRAFORM}
 
 # All is the first target in the file so it will get picked up when you just run 'make' on its own
+.PHONY: all
 all: check generate_docs
 
 # Run all available linters
+.PHONY: check
 check: check_shell check_python check_golang check_terraform check_docker check_base_files test_check_headers check_headers check_trailing_whitespace
 
 # The .PHONY directive tells make that this isn't a real target and so
