@@ -73,6 +73,7 @@ function docker() {
 # This function runs 'terraform validate' and 'terraform fmt'
 # against all directory paths which contain *.tf files.
 function check_terraform() {
+  set -e
   echo "Running terraform validate"
   find_files . -name "*.tf" -print0 \
     | compat_xargs -0 -n1 dirname \
