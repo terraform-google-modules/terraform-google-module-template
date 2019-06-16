@@ -27,6 +27,6 @@ resource "random_pet" "main" {
 module "example" {
   source = "../../../examples/simple_example"
 
-  project_id  = "${var.project_id}"
-  bucket_name = "${random_pet.main.id}"
+  project_id  = var.project_id
+  bucket_name = random_pet.main.id
 }

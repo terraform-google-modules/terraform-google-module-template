@@ -16,5 +16,5 @@
 
 output "bucket_name" {
   description = "The name of the bucket."
-  value       = "${module.{{ cookiecutter.module_name|replace('-', '_') }}.bucket_name}"
+  value       = module.{{ cookiecutter.module_name|replace('-', '_') }}.bucket_name
 }
