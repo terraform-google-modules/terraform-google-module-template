@@ -5,7 +5,7 @@
 # Instantiates the cookiecutter template, and runs its tests #
 ##############################################################
 
-_curdir=$(pwd)
+_curdir="$(pwd)"
 cd staging || exit 1
 cookiecutter --no-input "${_curdir}" module_name=module-test
 cd ./terraform-google-module-test || exit 1
