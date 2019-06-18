@@ -90,7 +90,7 @@ The following dependencies must be installed on the development system:
 - [hadolint]
 - [make]
 - [shellcheck]
-- [Terraform][terraform] v0.11
+- [Terraform][terraform] v0.12
 
 ### Execution
 
