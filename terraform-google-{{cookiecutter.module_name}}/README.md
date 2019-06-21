@@ -23,9 +23,8 @@ module "{{ cookiecutter.module_name|replace('-', '_') }}" {
 Functional examples are included in the
 [examples](./examples/) directory.
 
-[^]: (autogen_docs_start)
-
-[^]: (autogen_docs_end)
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Requirements
 
