@@ -126,14 +126,10 @@ function check_trailing_whitespace() {
 
 function generate_docs() {
   echo "Generating markdown docs with terraform-docs"
-  local path tmpfile
+  local path
   while read -r path; do
     if [[ -e "${path}/README.md" ]]; then
-      # shellcheck disable=SC2119
-      tmpfile="$(maketemp)"
-      echo "terraform-docs markdown ${path}"
-      terraform-docs markdown "${path}" > "${tmpfile}"
-      helpers/combine_docfiles.py "${path}"/README.md "${tmpfile}"
+      terraform_docs.sh .
     else
       echo "Skipping ${path} because README.md does not exist."
     fi
