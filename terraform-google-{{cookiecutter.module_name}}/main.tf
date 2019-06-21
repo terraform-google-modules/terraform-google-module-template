@@ -15,7 +15,7 @@
  */
 
 terraform {
-  required_version = "~> 0.11.0"
+  required_version = "~> 0.12.0"
 }
 
 resource "google_storage_bucket" "main" {

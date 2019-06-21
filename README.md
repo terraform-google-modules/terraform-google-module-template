@@ -42,6 +42,11 @@ The module will be generated at
 `./staging/terraform-google-module-test`. If the tests pass, the module
 will be removed; otherwise, it will be left in place for inspection.
 
+In order to execute the test following tools need to be installed:
+- `make`
+- `docker`
+- `jq`
+
 [cookiecutter]: https://cookiecutter.readthedocs.io/
 [kitchen-terraform]: https://github.com/newcontext-oss/kitchen-terraform
 [contributing]: ./terraform-google-{{cookiecutter.module_name}}/CONTRIBUTING.md
