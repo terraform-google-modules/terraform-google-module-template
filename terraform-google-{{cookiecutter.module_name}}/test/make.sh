@@ -129,7 +129,10 @@ function generate_docs() {
   local path
   while read -r path; do
     if [[ -e "${path}/README.md" ]]; then
-      terraform_docs.sh .
+      # script seem to be designed to work into current directory
+      cd $path && echo "Working in ${path} ..."
+      terraform_docs.sh . && echo Success! || echo "Warning! Exit code: ${?}"
+      cd - >/dev/null
     else
       echo "Skipping ${path} because README.md does not exist."
     fi
