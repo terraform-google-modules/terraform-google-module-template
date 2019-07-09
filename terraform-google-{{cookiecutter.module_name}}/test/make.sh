@@ -72,18 +72,13 @@ function docker() {
 
 # This function runs 'terraform validate' and 'terraform fmt'
 # against all directory paths which contain *.tf files.
-function check_terraform() {
-  set -e
-  echo "Running terraform validate"
+function check_terraform() {set -e
+  echo "Running terraform validate and terraform fmt"
   find_files . -name "*.tf" -print0 \
     | compat_xargs -0 -n1 dirname \
     | sort -u \
-    | compat_xargs -t -n1 terraform validate --check-variables=false
-  echo "Running terraform fmt"
-  find_files . -name "*.tf" -print0 \
-    | compat_xargs -0 -n1 dirname \
-    | sort -u \
-    | compat_xargs -t -n1 terraform fmt -check=true -write=false
+    | compat_xargs -t -n1 -i{} bash -c \
+    'terraform init "{}" > /dev/null && terraform validate "{}" && terraform fmt -check=true -write=false "{}"'
 }
 
 # This function runs 'go fmt' and 'go vet' on every file
