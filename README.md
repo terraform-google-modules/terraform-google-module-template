@@ -22,19 +22,23 @@ content should be modified to suit the purpose of the new module.
 Changes to this template must be tested to ensure that generated
 modules remain functional.
 
-Refer to the [README][readme] and [CONTRIBUTING][contributing]
+Refer to the [README][./terraform-google-{{cookiecutter.module_name}}/README.md] and [CONTRIBUTING][./terraform-google-{{cookiecutter.module_name}}/CONTRIBUTING.md]
 documents of the template to understand the requirements for testing
 the generated module.
 
-The key for the service account described in the README must be located
-at `./credentials.test.json`.
+Export a Service Account key and env variables:
+
+```
+export SERVICE_ACCOUNT_JSON=$(< credentials.json)
+export TF_VAR_org_id="your_org_id"
+export TF_VAR_folder_id="your_folder_id"
+export TF_VAR_billing_account="your_billing_account_id"
+```
 
 Generate a module and execute its tests by running the following
 command:
 
 ```sh
-PROJECT_ID="<ID of test project>" \
-SERVICE_ACCOUNT_JSON="$(cat ./credentials.test.json)" \
 make test
 ```
 
@@ -45,7 +49,6 @@ will be removed; otherwise, it will be left in place for inspection.
 In order to execute the test following tools need to be installed:
 - `make`
 - `docker`
-- `jq`
 
 [cookiecutter]: https://cookiecutter.readthedocs.io/
 [kitchen-terraform]: https://github.com/newcontext-oss/kitchen-terraform
