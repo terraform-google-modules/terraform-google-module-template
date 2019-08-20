@@ -1,5 +1,5 @@
 /**
- * Copyright YEAR Google LLC
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,3 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+module "project" {
+  source  = "terraform-google-modules/project-factory/google"
+  version = "~> 3.0"
+
+  name              = "ci-{{ cookiecutter.module_name|replace('-', '_') }}"
+  random_project_id = "true"
+  org_id            = var.org_id
+  folder_id         = var.folder_id
+  billing_account   = var.billing_account
+
+  activate_apis = [
+    "cloudresourcemanager.googleapis.com",
+    "storage-api.googleapis.com",
+    "serviceusage.googleapis.com"
+  ]
+}
