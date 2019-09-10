@@ -9,6 +9,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- Lint-tests splitted to separate steps for the Cloud Build.
+
 ## [0.1.0] - 20XX-YY-ZZ
 
 ### Added
