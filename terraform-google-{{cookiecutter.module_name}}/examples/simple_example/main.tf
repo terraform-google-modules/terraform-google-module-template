@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 
 provider "google" {
-  version = "~> 2.0"
+  version = "~> 3.0"
 }
 
 module "{{ cookiecutter.module_name|replace('-', '_') }}" {
