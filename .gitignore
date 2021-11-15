@@ -1,3 +1,6 @@
 credentials.env
 credentials.test.json
 staging/*
+
+# tf lock file
+.terraform.lock.hcl
