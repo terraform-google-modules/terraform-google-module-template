@@ -80,3 +80,7 @@ information on contributing to this module.
 [project-factory-module]: https://registry.terraform.io/modules/terraform-google-modules/project-factory/google
 [terraform-provider-gcp]: https://www.terraform.io/docs/providers/google/index.html
 [terraform]: https://www.terraform.io/downloads.html
+
+## Security Disclosures
+
+Please see our [security disclosure process](./SECURITY.md).
