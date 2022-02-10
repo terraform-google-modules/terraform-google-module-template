@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-provider "google" {
-  version = "~> 3.0"
-}
-
 module "{{ cookiecutter.module_name|replace('-', '_') }}" {
   source = "../.."
 
