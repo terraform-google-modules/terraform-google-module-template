@@ -30,8 +30,7 @@ func TestSimpleExample(t *testing.T) {
 		example.DefaultVerify(assert)
 
 		projectID := example.GetStringOutput("project_id")
-		gcloudArgs := gcloud.WithCommonArgs([]string{"--project", projectID, "--format", "json"})
-		services := gcloud.Run(t, "services list", gcloudArgs).Array()
+		services := gcloud.Run(t, "services list", gcloud.WithCommonArgs([]string{"--project", projectID, "--format", "json"})).Array()
 
 		match := utils.GetFirstMatchResult(t, services, "config.name", "storage.googleapis.com")
 		assert.Equal("ENABLED", match.Get("state").String(), "storage service should be enabled")
