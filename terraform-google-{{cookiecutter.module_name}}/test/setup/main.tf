@@ -16,9 +16,9 @@
 
 module "project" {
   source  = "terraform-google-modules/project-factory/google"
-  version = "~> 11.0"
+  version = "~> 13.0"
 
-  name              = "ci-{{ cookiecutter.module_name|replace('-', '_') }}"
+  name              = "ci-{{ cookiecutter.module_name }}"
   random_project_id = "true"
   org_id            = var.org_id
   folder_id         = var.folder_id
