@@ -15,6 +15,7 @@
  */
 
 resource "google_storage_bucket" "main" {
-  project = var.project_id
-  name    = var.bucket_name
+  project  = var.project_id
+  name     = var.bucket_name
+  location = "US"
 }
