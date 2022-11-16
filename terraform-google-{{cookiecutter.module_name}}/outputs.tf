@@ -15,5 +15,6 @@
  */
 
 output "bucket_name" {
-  value = google_storage_bucket.main.name
+  description = "Name of the bucket"
+  value       = google_storage_bucket.main.name
 }
