@@ -1,10 +1,21 @@
 # terraform-google-{{cookiecutter.module_name}}
 
+## Description
+### tagline
+This is an auto-generated module.
+
+### detailed
 This module was generated from [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template/), which by default generates a module that simply creates a GCS bucket. As the module develops, this README should be updated.
 
 The resources/services/activations/deletions that this module will create/trigger are:
 
 - Create a GCS bucket with the provided name
+
+### preDeploy
+To deploy this blueprint you must have an active billing account and billing permissions.
+
+## Documentation
+- [Hosting a Static Website](https://cloud.google.com/storage/docs/hosting-static-website)
 
 ## Usage
 
