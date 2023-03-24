@@ -14,8 +14,21 @@ The resources/services/activations/deletions that this module will create/trigge
 ### PreDeploy
 To deploy this blueprint you must have an active billing account and billing permissions.
 
+## Architecture
+![alt text for diagram](https://www.link-to-architecture-diagram.com)
+1. Architecture description step no. 1
+2. Architecture description step no. 2
+3. Architecture description step no. N
+
 ## Documentation
 - [Hosting a Static Website](https://cloud.google.com/storage/docs/hosting-static-website)
+
+## Deployment Duration
+Configuration: X mins
+Deployment: Y mins
+
+## Cost
+[Blueprint cost details](https://cloud.google.com/products/calculator?id=02fb0c45-cc29-4567-8cc6-f72ac9024add)
 
 ## Usage
 
