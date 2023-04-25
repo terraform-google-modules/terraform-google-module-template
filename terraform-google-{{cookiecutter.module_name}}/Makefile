@@ -82,7 +82,7 @@ docker_generate_docs:
 		/bin/bash -c 'source /usr/local/bin/task_helper_functions.sh && generate_docs'
 
 # Generate metadata
-.PHONY: docker_generate_metadata
+.PHONY: docker_generate_metadata_w_display
 docker_generate_metadata:
 	docker run --rm -it \
 		-v "$(CURDIR)":/workspace \
