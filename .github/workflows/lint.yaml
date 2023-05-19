@@ -31,4 +31,4 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: 'actions/checkout@v3'
-      - run: docker run --rm -v ${{ github.workspace }}:/workspace dev-tools=gcr.io/cloud-foundation-cicd/cft/developer-tools-krm:1 test/lint.sh
+      - run: docker run --rm -v ${{ github.workspace }}:/workspace gcr.io/cloud-foundation-cicd/cft/developer-tools-krm:1 test/lint.sh
