@@ -38,8 +38,8 @@ jobs:
             echo dev-tools=gcr.io/cloud-foundation-cicd/cft/developer-tools:1 >> "$GITHUB_OUTPUT"
           else
             VERSION=$(grep "DOCKER_TAG_VERSION_DEVELOPER_TOOLS := " $MAKEFILE | cut -d\  -f3)
-            IMAGE=$(grep "DOCKER_IMAGE_DEVELOPER_TOOLS := " $MAKEFILE | cut -d\  -f3)
+            IMAGE=developer-tools-krm
             REGISTRY=$(grep "REGISTRY_URL := " $MAKEFILE | cut -d\  -f3)
             echo dev-tools=${REGISTRY}/${IMAGE}:${VERSION} >> "$GITHUB_OUTPUT"
           fi
-      - run: docker run --rm -v ${{ github.workspace }}:/workspace ${{ steps.variables.outputs.dev-tools }} /workspace/test/lint.sh
+      - run: docker run --rm -v ${{ github.workspace }}:/workspace ${{ steps.variables.outputs.dev-tools }} test/lint.sh
