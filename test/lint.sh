@@ -19,6 +19,9 @@
 # Instantiates the cookiecutter template, and runs lint.     #
 ##############################################################
 
+sudo apt update
+sudo apt install cookiecutter
+
 _curdir="$(pwd)"
 cd staging || exit 1
 cookiecutter --no-input "${_curdir}" module_name=module-test
