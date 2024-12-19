@@ -3,8 +3,8 @@ module github.com/terraform-google-modules/{{cookiecutter.module_name}}/test/int
 go 1.21
 
 require (
-	github.com/GoogleCloudPlatform/cloud-foundation-toolkit/infra/blueprint-test v0.11.1
-	github.com/stretchr/testify v1.8.4
+	github.com/GoogleCloudPlatform/cloud-foundation-toolkit/infra/blueprint-test v0.17.3
+	github.com/stretchr/testify v1.10.0
 )
 
 require (
